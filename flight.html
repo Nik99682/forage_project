@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlightMate - Itinerary</title>
+  <link rel="stylesheet" href="flight.css">
+</head>
+<body>
+
+  <div class="form-section">
+    <h2>Enter Flight Details</h2>
+    <input type="text" id="passenger" placeholder="Passenger Name" />
+    <input type="text" id="flight" placeholder="Flight Number" />
+    <input type="text" id="from" placeholder="From (City - Code)" />
+    <input type="text" id="to" placeholder="To (City - Code)" />
+    <input type="date" id="date" />
+    <input type="time" id="time" />
+    <input type="text" id="gate" placeholder="Gate" />
+    <input type="text" id="seat" placeholder="Seat" />
+    <button onclick="updateItinerary()">Generate Itinerary</button>
+  </div>
+
+  <div class="flight-card">
+    <div class="airline-header">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/airplane-take-off.png" alt="Airline Logo">
+      <h2>FlightMate Airlines</h2>
+    </div>
+
+    <div class="flight-info">
+      <div class="row">
+        <div>
+          <h3>From</h3>
+          <p id="fromText">Delhi (DEL)</p>
+        </div>
+        <div>
+          <h3>To</h3>
+          <p id="toText">Mumbai (BOM)</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <h3>Flight</h3>
+          <p id="flightText">FM1234</p>
+        </div>
+        <div>
+          <h3>Date</h3>
+          <p id="dateText">2025-06-10</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <h3>Time</h3>
+          <p id="timeText">07:30</p>
+        </div>
+        <div>
+          <h3>Gate</h3>
+          <p id="gateText">A12</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <h3>Seat</h3>
+          <p id="seatText">14A</p>
+        </div>
+        <div>
+          <h3>Passenger</h3>
+          <p id="passengerText">Nikhil Choudhary</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-section">
+      <img id="qrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=FM1234-Nikhil" alt="QR Code">
+      <p>Show this code at boarding gate</p>
+    </div>
+  </div>
+
+  <script src="flight.js"></script>
+</body>
+</html>
