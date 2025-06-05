@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Microservice Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0077cc;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #005999;
+    }
+
+    .section {
+      background: #fff;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0077cc;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Microservice Frontend Simulation</h1>
+
+  <div class="buttons">
+    <button onclick="loadUsers()">Load Users</button>
+    <button onclick="loadProducts()">Load Products</button>
+    <button onclick="loadOrders()">Load Orders</button>
+  </div>
+
+  <div class="section" id="users">
+    <h2>Users</h2>
+    <ul id="userList"></ul>
+  </div>
+
+  <div class="section" id="products">
+    <h2>Products</h2>
+    <ul id="productList"></ul>
+  </div>
+
+  <div class="section" id="orders">
+    <h2>Orders</h2>
+    <ul id="orderList"></ul>
+  </div>
+
+  <script>
+    // Simulated Microservices
+
+    function getUsers() {
+      return [
+        { id: 1, name: "Alice" },
+        { id: 2, name: "Bob" }
+      ];
+    }
+
+    function getProducts() {
+      return [
+        { id: 101, name: "Laptop" },
+        { id: 102, name: "Phone" }
+      ];
+    }
+
+    function getOrders() {
+      return [
+        { id: 1001, userId: 1, productId: 101 },
+        { id: 1002, userId: 2, productId: 102 }
+      ];
+    }
+
+    function clearList(elementId) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = "";
+    }
+
+    function loadUsers() {
+      const users = getUsers();
+      clearList("userList");
+      const ul = document.getElementById("userList");
+      users.forEach(user => {
+        const li = document.createElement("li");
+        li.textContent = `${user.name} (ID: ${user.id})`;
+        ul.appendChild(li);
+      });
+    }
+
+    function loadProducts() {
+      const products = getProducts();
+      clearList("productList");
+      const ul = document.getElementById("productList");
+      products.forEach(product => {
+        const li = document.createElement("li");
+        li.textContent = `${product.name} (ID: ${product.id})`;
+        ul.appendChild(li);
+      });
+    }
+
+    function loadOrders() {
+      const orders = getOrders();
+      const users = getUsers();
+      const products = getProducts();
+      clearList("orderList");
+      const ul = document.getElementById("orderList");
+      orders.forEach(order => {
+        const user = users.find(u => u.id === order.userId);
+        const product = products.find(p => p.id === order.productId);
+        const li = document.createElement("li");
+        li.textContent = `Order ID: ${order.id} - ${user.name} ordered ${product.name}`;
+        ul.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
